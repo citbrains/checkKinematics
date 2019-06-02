@@ -21,6 +21,7 @@ int mx0, my0;
 int play_no;
 extern float the;	// temp
 
+/*
 int motion_data[MAX_MOTION][MAX_JOINT_DATA] = {
 	{-1,21,-42,28,-2,-8,-3,41,-77,43,2,8,0,0,0,45},
 	{0,21,-45,28,-1,-12,-1,25,-53,32,1,12,0,0,0,45},
@@ -38,20 +39,24 @@ int motion_data[MAX_MOTION][MAX_JOINT_DATA] = {
 	{0,36,-68,36,-1,0,0,23,-44,25,1,0,-1,0,0,45},
 	{0,25,-51,27,-1,0,0,23,-45,24,1,0,0,0,0,45}
 };
-
-/*
-int corr[MAX_JOINT][2][2] = {
-	{{ 2,15},{ 2,15}},
-	{{ 3,14},{ 3,14}},
-	{{ 4,12},{11,12}},
-	{{ 5, 5},{12,11}},
-	{{ 6, 4},{13,10}},
-	{{ 7, 3},{14, 9}},
-	{{ 8, 2},{15, 8}},
-	{{ 9, 1},{16, 7}},
-	{{10, 0},{17, 6}}
-};
 */
+int motion_data[MAX_MOTION][MAX_JOINT_DATA] = {
+	{-1,0,-42,28,-2,-8,-3,0,-77,43,2,8,0,0,0,45},
+	{0,0,-45,28,-1,-12,-1,0,-53,32,1,12,0,0,0,45},
+	{1,0,-77,43,-1,-7,0,0,-45,30,2,7,1,0,0,45},
+	{0,0,-68,39,-1,0,0,0,-44,28,1,0,-1,0,0,45},
+	{0,0,-50,31,-1,-1,-1,0,-65,38,1,1,-1,0,0,45},
+	{-1,0,-42,28,-2,-8,-3,0,-77,43,1,8,0,0,0,45},
+	{0,0,-45,28,-1,-12,-1,0,-53,32,1,12,0,0,0,45},
+	{1,0,-77,43,-1,-7,-1,0,-45,30,2,7,1,0,0,45},
+	{0,0,-68,39,-1,0,-1,0,-44,28,1,0,-1,0,0,45},
+	{-1,0,-50,31,-1,-1,-2,0,-65,38,1,1,-1,0,0,45},
+	{0,0,-42,28,-2,-8,-2,0,-77,43,1,8,0,0,0,45},
+	{0,0,-45,28,-1,-12,-1,0,-53,32,1,12,0,0,0,45},
+	{1,0,-77,43,-1,-7,0,0,-45,30,2,7,0,0,0,45},
+	{0,0,-68,36,-1,0,0,0,-44,25,1,0,-1,0,0,45},
+	{0,0,-51,27,-1,0,0,0,-45,24,1,0,0,0,0,45}
+};
 
 void myinit(void)
 {
@@ -93,12 +98,6 @@ void display(void)                /* CALLBACK を消す */
 			if (i == 10) break;
 			glVertex3f(position[i][0]/100, position[i][1]/100, position [i][2]/100);
 		}
-//		glVertex3f(position2[0][0]/100, position2[0][1]/100, 0.0f);
-//		for(i = 0;i < 11;i ++){		// スケルトンを書く
-//			glVertex3f(position2[i][0]/100, position2[i][1]/100, position2[i][2]/100);
-//			if (i == 10) break;
-//			glVertex3f(position2[i][0]/100, position2[i][1]/100, position2[i][2]/100);
-//		}
 		for(i = 11;i < 18;i ++){		// スケルトンを書く
 			glVertex3f(position[i  ][0]/100, position[i  ][1]/100, position[i  ][2]/100);
 			if (i == 17) break;
@@ -108,18 +107,12 @@ void display(void)                /* CALLBACK を消す */
 		for(i = 0;i < 4;i ++){		// カメラの縁を示す線を書く
 			glVertex3f(position[9][0]/100, position[9][1]/100, position[9][2]/100);
 			glVertex3f(cam_position[i][0]/100, cam_position[i][1]/100, cam_position[i][2]/100);
-//			glVertex3f(position2[9][0]/100, position2[9][1]/100, position2[9][2]/100);
-//			glVertex3f(cam_position2[i][0]/100, cam_position2[i][1]/100, cam_position2[i][2]/100);
 		}
 		for(i = 0;i < 4;i ++){		// 地面のカメラの枠を書く
 			if ((cam_position[no[i][0]][2] == 0.0f)&&(cam_position[no[i][1]][2] == 0.0f)){
 				glVertex3f(cam_position[no[i][0]][0]/100, cam_position[no[i][0]][1]/100, 0.0f);
 				glVertex3f(cam_position[no[i][1]][0]/100, cam_position[no[i][1]][1]/100, 0.0f);
 			}
-//			if ((cam_position2[no[i][0]][2] == 0.0f)&&(cam_position2[no[i][1]][2] == 0.0f)){
-//				glVertex3f(cam_position2[no[i][0]][0]/100, cam_position2[no[i][0]][1]/100, 0.0f);
-//				glVertex3f(cam_position2[no[i][1]][0]/100, cam_position2[no[i][1]][1]/100, 0.0f);
-//			}
 		}
 		for(x = -1000;x <= 1000;x += 200){
 			for(y = -1000;y <= 1000;y += 200){
@@ -198,6 +191,14 @@ void keyboard(unsigned char key, int x, int y)
 			for(i = 0;i < 16;i ++){
 				angle[i] = deg2rad((float)motion_data[play_no][i]);
 			}
+			break;
+		}
+		case '\\':
+		{
+			for(i = 0;i < 18;i ++){
+				angle[i] = deg2rad(0.0f);
+			}
+			angle[15] = 3.14159/4.0;
 			break;
 		}
 

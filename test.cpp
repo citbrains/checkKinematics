@@ -9,59 +9,35 @@ enum joint{
 	CAM,H,HE,H1,BR1,LR1,LR2,LR3,LR4,LR5,LR6,BL1,LL1,LL2,LL3,LL4,LL5,LL6
 };
 
-int corr[18] = { -1, -1,15,14,12, 5, 4, 3, 2, 1, 0,12,11,10, 9, 8, 7, 6 };
+int corr[18] = { -1, -1, 15, 14, 12, 5, 4, 3, 2, 1, 0, 12, 11, 10, 9, 8, 7, 6 };
 
 struct link_para_T{
 	float p[3];
 	float a[3];
 };
 
-struct link_para_T link_para[18] = 
+const struct link_para_T link_para_ganken_kun[18] = 
 {
 	{{300.0f,   0.0f,   0.0f},{  0.0f,  0.0f,  0.0f}},	// CAM
-	{{ 41.5f,  20.6f,  66.1f},{  0.0f,  0.0f,  1.0f}},	// H
-	{{ 28.0f,   0.0f,   0.0f},{  0.0f,  1.0f,  0.0f}},	// HE
-	{{  0.0f,   0.0f, 166.0f},{  0.0f,  0.0f,  1.0f}},	// H1
+	{{  0.0f,   0.0f,   0.0f},{  0.0f,  0.0f,  0.0f}},	// H
+	{{ 38.6f,   0.0f,   0.0f},{  0.0f,  1.0f,  0.0f}},	// HE
+	{{ -5.0f,   0.0f, 227.3f},{  0.0f,  0.0f,  1.0f}},	// H1
 
 	{{  0.0f,  44.0f,   0.0f},{  0.0f,  1.0f,  0.0f}},	// BR1
-	{{  0.0f,   0.0f,  45.8f},{  0.0f,  0.0f,  1.0f}},	// LR1
+	{{  0.0f,   0.0f,  57.5f},{  0.0f,  0.0f,  1.0f}},	// LR1
 	{{  0.0f,   0.0f,   0.0f},{  1.0f,  0.0f,  0.0f}},	// LR2
-	{{  0.0f,   0.0f, 118.0f},{  0.0f,  1.0f,  0.0f}},	// LR3
-	{{  0.0f,   0.0f, 118.0f},{  0.0f,  1.0f,  0.0f}},	// LR4
+	{{  0.0f,   0.0f, 100.0f},{  0.0f,  1.0f,  0.0f}},	// LR3
+	{{  0.0f,   0.0f, 100.0f},{  0.0f,  1.0f,  0.0f}},	// LR4
 	{{  0.0f,   0.0f,   0.0f},{  0.0f,  1.0f,  0.0f}},	// LR5
-	{{  0.0f,   0.0f,  66.0f},{  1.0f,  0.0f,  0.0f}},	// LR6
+	{{  0.0f,   0.0f,  43.0f},{  1.0f,  0.0f,  0.0f}},	// LR6
 
 	{{  0.0f, -44.0f,   0.0f},{  0.0f,  1.0f,  0.0f}},	// BL1
-	{{  0.0f,   0.0f,  45.8f},{  0.0f,  0.0f,  1.0f}},	// LL1
+	{{  0.0f,   0.0f,  57.5f},{  0.0f,  0.0f,  1.0f}},	// LL1
 	{{  0.0f,   0.0f,   0.0f},{  1.0f,  0.0f,  0.0f}},	// LL2
-	{{  0.0f,   0.0f, 118.0f},{  0.0f,  1.0f,  0.0f}},	// LL3
-	{{  0.0f,   0.0f, 118.0f},{  0.0f,  1.0f,  0.0f}},	// LL4
+	{{  0.0f,   0.0f, 100.0f},{  0.0f,  1.0f,  0.0f}},	// LL3
+	{{  0.0f,   0.0f, 100.0f},{  0.0f,  1.0f,  0.0f}},	// LL4
 	{{  0.0f,   0.0f,   0.0f},{  0.0f,  1.0f,  0.0f}},	// LL5
-	{{  0.0f,   0.0f,  66.0f},{  1.0f,  0.0f,  0.0f}}	// LL6
-};
-
-struct link_para_T link_para2[18] = 
-{
-	{{300.0f,   0.0f,   0.0f},{  0.0f,  0.0f,  0.0f}},	// CAM
-	{{ 41.5f,  20.6f,  66.1f},{  0.0f,  0.0f,  1.0f}},	// H
-	{{ 28.0f,   0.0f,   0.0f},{  0.0f,  1.0f,  0.0f}},	// HE
-	{{  0.0f,   0.0f, 166.0f},{  0.0f,  0.0f,  1.0f}},	// H1
-
-	{{  0.0f,  44.0f,   0.0f},{  0.0f,  1.0f,  0.0f}},	// BR1
-	{{  0.0f,   0.0f,  45.8f},{  0.0f,  0.0f,  1.0f}},	// LR1
-	{{  0.0f,   0.0f,   0.0f},{  1.0f,  0.0f,  0.0f}},	// LR2
-	{{  0.0f,   0.0f, 118.0f},{  0.0f,  1.0f,  0.0f}},	// LR3
-	{{  0.0f,   0.0f, 118.0f},{  0.0f,  1.0f,  0.0f}},	// LR4
-	{{  0.0f,   0.0f,   0.0f},{  0.0f,  1.0f,  0.0f}},	// LR5
-	{{  0.0f,   0.0f,  66.0f},{  1.0f,  0.0f,  0.0f}},	// LR6
-
-	{{  0.0f, -44.0f,   0.0f},{  0.0f,  1.0f,  0.0f}},	// BL1
-	{{  0.0f,   0.0f,  45.8f},{  0.0f,  0.0f,  1.0f}},	// LL1
-	{{  0.0f,   0.0f,   0.0f},{  1.0f,  0.0f,  0.0f}},	// LL2
-	{{  0.0f,   0.0f, 118.0f},{  0.0f,  1.0f,  0.0f}},	// LL3
-	{{  0.0f,   0.0f, 118.0f},{  0.0f,  1.0f,  0.0f}},	// LL4
-	{{  0.0f,   0.0f,   0.0f},{  0.0f,  1.0f,  0.0f}},	// LL5
-	{{  0.0f,   0.0f,  66.0f},{  1.0f,  0.0f,  0.0f}}	// LL6
+	{{  0.0f,   0.0f,  43.0f},{  1.0f,  0.0f,  0.0f}}	// LL6
 };
 
 float cam_matrix[4][4],cam_matrix_t[2][4][4];
@@ -69,49 +45,55 @@ float cam_matrix[4][4],cam_matrix_t[2][4][4];
 float *linkMatrix(int no, float ang, float matrix[4][4]){
 	float c = (float)cos(ang), s = (float)sin(ang);
 	
-	matrix[0][0] = 1.0f; matrix[0][1] = 0.0f; matrix[0][2] = 0.0f; matrix[0][3] = link_para[no].p[0];
-	matrix[1][0] = 0.0f; matrix[1][1] = 1.0f; matrix[1][2] = 0.0f; matrix[1][3] = link_para[no].p[1];
-	matrix[2][0] = 0.0f; matrix[2][1] = 0.0f; matrix[2][2] = 1.0f; matrix[2][3] = link_para[no].p[2];
+	matrix[0][0] = 1.0f; matrix[0][1] = 0.0f; matrix[0][2] = 0.0f; matrix[0][3] = link_para_ganken_kun[no].p[0];
+	matrix[1][0] = 0.0f; matrix[1][1] = 1.0f; matrix[1][2] = 0.0f; matrix[1][3] = link_para_ganken_kun[no].p[1];
+	matrix[2][0] = 0.0f; matrix[2][1] = 0.0f; matrix[2][2] = 1.0f; matrix[2][3] = link_para_ganken_kun[no].p[2];
 	matrix[3][0] = 0.0f; matrix[3][1] = 0.0f; matrix[3][2] = 0.0f; matrix[3][3] = 1.0f;
 	for(int i = 0;i < 3;i ++){
-		if (link_para[no].a[i] != 0){
-			matrix[(i+1)%3][(i+1)%3] =  c * link_para[no].a[i];
-			matrix[(i+1)%3][(i+2)%3] = -s * link_para[no].a[i];
-			matrix[(i+2)%3][(i+1)%3] =  s * link_para[no].a[i];
-			matrix[(i+2)%3][(i+2)%3] =  c * link_para[no].a[i];
+		if (link_para_ganken_kun[no].a[i] != 0){
+			matrix[(i+1)%3][(i+1)%3] =  c * link_para_ganken_kun[no].a[i];
+			matrix[(i+1)%3][(i+2)%3] = -s * link_para_ganken_kun[no].a[i];
+			matrix[(i+2)%3][(i+1)%3] =  s * link_para_ganken_kun[no].a[i];
+			matrix[(i+2)%3][(i+2)%3] =  c * link_para_ganken_kun[no].a[i];
 		}
 	}
 	return matrix[0];
 }
 
-float *linkMatrix2(int no, float ang, float matrix[4][4]){
-	float c = (float)cos(ang), s = (float)sin(ang);
+/*!
+ * @brief 4x4の行列のコピー
+ * @param[in] d[4][4] コピー先の行列 
+ * @param[in] a[4][4] コピー元の行列
+ * @return 0:成功 -1:失敗
+ */
+static int copyMatrix(float d[4][4], float s[4][4]){
+	int i,j;
 	
-	matrix[0][0] = 1.0f; matrix[0][1] = 0.0f; matrix[0][2] = 0.0f; matrix[0][3] = link_para2[no].p[0];
-	matrix[1][0] = 0.0f; matrix[1][1] = 1.0f; matrix[1][2] = 0.0f; matrix[1][3] = link_para2[no].p[1];
-	matrix[2][0] = 0.0f; matrix[2][1] = 0.0f; matrix[2][2] = 1.0f; matrix[2][3] = link_para2[no].p[2];
-	matrix[3][0] = 0.0f; matrix[3][1] = 0.0f; matrix[3][2] = 0.0f; matrix[3][3] = 1.0f;
-	for(int i = 0;i < 3;i ++){
-		if (link_para2[no].a[i] != 0){
-			matrix[(i+1)%3][(i+1)%3] =  c * link_para2[no].a[i];
-			matrix[(i+1)%3][(i+2)%3] = -s * link_para2[no].a[i];
-			matrix[(i+2)%3][(i+1)%3] =  s * link_para2[no].a[i];
-			matrix[(i+2)%3][(i+2)%3] =  c * link_para2[no].a[i];
-		}
-	}
-	return matrix[0];
+	for(i = 0;i < 4;i ++)
+		for(j = 0;j < 4;j ++)
+			d[i][j] = s[i][j];
+	return 0;
 }
 
-float *mulMatrix(float a[4][4], float b[4][4], float ans[4][4]){
-	for(int i = 0;i < 4;i ++){
-		for(int j = 0;j < 4;j ++){
+/*!
+ * @brief 4x4の行列の積
+ * @param[in] a[4][4] 4x4の行列
+ * @param[in] b[4][4] 4x4行列
+ * @param[in] ans[4][4] 4x4の行列 ans = a.b 
+ * @return 0:成功 -1:失敗
+ */
+static int mulMatrix(float a[4][4], float b[4][4], float ans[4][4]){
+	int i,j,k;
+	
+	for(i = 0;i < 4;i ++){
+		for(j = 0;j < 4;j ++){
 			ans[i][j] = 0.0f;
-			for(int k = 0;k < 4;k ++){
+			for(k = 0;k < 4;k ++){
 				ans[i][j] += a[i][k] * b[k][j];
 			}
 		}
 	}
-	return ans[0];
+	return 0;
 }
 
 int invMatrix(float a[3][3], float ans[3][3]){
@@ -129,13 +111,48 @@ int invMatrix(float a[3][3], float ans[3][3]){
 	return 0;
 }
 
-float *copyMatrix(float d[4][4], float s[4][4]){
-	for(int i = 0;i < 4;i ++)
-		for(int j = 0;j < 4;j ++)
-			d[i][j] = s[i][j];
-	return d[0];
+
+/*!
+ * @brief 同次行列4x4の逆行列
+ * @param[in] a[4][4] 3x3の行列
+ * @param[in] ans[4][4] 3x3の行列 ans = a^-1 
+ * @return 0:成功 -1:失敗
+ */
+static int invHTMatrix(float a[4][4], float ans[4][4]){
+	float mat,sign;
+	int i, j;
+	
+	mat = a[0][0]*a[1][1]*a[2][2] + a[0][1]*a[1][2]*a[2][0] + a[0][2]*a[1][0]*a[2][1] -
+		a[0][2]*a[1][1]*a[2][0] - a[0][1]*a[1][0]*a[2][2] - a[0][0]*a[1][2]*a[2][1];
+	if (mat == 0.0f) return -1;
+	for(i = 0;i < 3;i ++){
+		for(j = 0;j < 3;j ++){
+			sign = 1.0f;
+			ans[j][i] = sign*(a[(i+1)%3][(j+1)%3]*a[(i+2)%3][(j+2)%3]-a[(i+1)%3][(j+2)%3]*a[(i+2)%3][(j+1)%3])/mat;
+		}
+	}
+	ans[0][3] = - ans[0][0]*a[0][3] - ans[0][1]*a[1][3] - ans[0][2]*a[2][3];
+	ans[1][3] = - ans[1][0]*a[0][3] - ans[1][1]*a[1][3] - ans[1][2]*a[2][3];
+	ans[2][3] = - ans[2][0]*a[0][3] - ans[2][1]*a[1][3] - ans[2][2]*a[2][3];
+	ans[3][0] = ans[3][1] = ans[3][2] = 0; ans[3][3] = 1;
+	return 0;
 }
 
+/*!
+ * @brief 同次行列4x4とベクトル3x1の積
+ * @param[in] a[4][4] 4x4の行列
+ * @param[in] b[3] 3x1のベクトル
+ * @param[in] ans[3] 3x1のベクトル ans = a.b 
+ * @return 0:成功 -1:失敗
+ */
+static int mulHTMatrix(float a[4][4], float b[3], float ans[3]){
+	int i;
+	
+	for(i = 0;i < 3;i ++){
+		ans[i] = a[i][0]*b[0]+a[i][1]*b[1]+a[i][2]*b[2]+a[i][3];
+	}
+	return 0;
+}
 
 float camera_pos(int leg, float ang_t[16], float pos[11][3]){
 	float link[18][4][4];
@@ -183,9 +200,10 @@ float camera_pos(int leg, float ang_t[16], float pos[11][3]){
 float the = 0.0f;
 
 float camera_pos_from_waist(int *leg, float ang_t[16], float pos[11][3]){
-	float link[18][4][4], right[7][4][4], left[7][4][4];
-	float kine[11][4][4], cam[4][4], rot[4][4];
+	float link[18][4][4], right[7][4][4], left[7][4][4];		// リンクマトリクス
+	float kine[11][4][4], cam[4][4], rot[4][4];					// キネマティクス計算用マトリクス
 	float ang[18], x0[3], x1[3], s, c, the, the2;
+	float temp[18][3], x, y, r[4][4], l[4][4];
 
 	for(int i = 0;i < 18;i ++){					// 関節角をセット
 		if (corr[i] >= 0){
@@ -194,6 +212,16 @@ float camera_pos_from_waist(int *leg, float ang_t[16], float pos[11][3]){
 			ang[i] = 0;
 		}
 	}
+
+	{										// 平行リンク
+		float l5 = ang[LL5] - ang[LL4];
+		float r5 = ang[LR5] - ang[LR4];
+		float l4 = ang[LL4] - ang[LL3];
+		float r4 = ang[LR4] - ang[LR3];
+		ang[LL5] = l5; ang[LR5] = r5;
+		ang[LL4] = l4; ang[LR4] = r4;
+	}
+
 	for(int i = 0;i < 18;i ++){					// リンクマトリクス
 		linkMatrix(i,ang[i],link[i]);
 	}
@@ -205,13 +233,14 @@ float camera_pos_from_waist(int *leg, float ang_t[16], float pos[11][3]){
 	for(int i = LL5;i >= BL1;i --){
 		mulMatrix(left[LL5-i],link[i],left[LL5-i+1]);
 	}
-	if (right[6][2][3] > left[6][2][3]){
+	if (right[5][2][3] > left[5][2][3]){
 		for(int i = 0;i < 7;i ++) copyMatrix(kine[i],right[i]);
 		*leg = SUPPORT_LEG_RIGHT;
 	} else {
 		for(int i = 0;i < 7;i ++) copyMatrix(kine[i],left[i]);
 		*leg = SUPPORT_LEG_LEFT;
 	}
+
 	mulMatrix(kine[6],link[H1],kine[7]);		// 腰→首
 	mulMatrix(kine[7],link[HE],kine[8]);		// 首旋回
 	mulMatrix(kine[8],link[H],kine[9]);			// 首上下
@@ -239,6 +268,7 @@ float camera_pos_from_waist(int *leg, float ang_t[16], float pos[11][3]){
 		pos[i][2] = kine[i][2][3] - x0[2];
 	}
 
+/*
 	if (*leg  == SUPPORT_LEG_RIGHT){
 		x1[0] = left[6][0][3];
 		x1[1] = left[6][1][3];
@@ -267,6 +297,59 @@ float camera_pos_from_waist(int *leg, float ang_t[16], float pos[11][3]){
 			pos[i+12][0] =  (right[i][0][3] - x1[0]) * c + (right[i][1][3] - x1[1]) * s;
 			pos[i+12][1] = -(right[i][0][3] - x1[0]) * s + (right[i][1][3] - x1[1]) * c;
 			pos[i+12][2] =   right[i][2][3] - x1[2];
+		}
+	}
+*/
+	// 浮いている側の足の処理
+
+	if (*leg  == SUPPORT_LEG_RIGHT){
+		x1[0] = left[6][0][3]; x1[1] = left[6][1][3]; x1[2] = left[6][2][3];
+		// 遊脚を腰を原点とするリンク座標に変換
+		float r[4][4], a[3];
+		invHTMatrix(left[6], r);
+		// 足先の位置
+		a[0] = 0; a[1] = 0; a[2] = 0;
+		mulHTMatrix(r, a, temp[11]);
+		// 各関節の位置
+		for(int i = 0;i < 6;i ++){
+			a[0] = left[i][0][3]; a[1] = left[i][1][3]; a[2] = left[i][2][3];
+			mulHTMatrix(r, a, temp[i+12]);
+		}
+		// 支持脚の腰の位置に合うように変換
+		for(int i = 0;i < 7;i ++){
+			pos[i+11][0] = kine[6][0][0] * temp[i+11][0] + kine[6][0][1] * temp[i+11][1] + kine[6][0][2] * temp[i+11][2]; 
+			pos[i+11][1] = kine[6][1][0] * temp[i+11][0] + kine[6][1][1] * temp[i+11][1] + kine[6][1][2] * temp[i+11][2]; 
+			pos[i+11][2] = kine[6][2][0] * temp[i+11][0] + kine[6][2][1] * temp[i+11][1] + kine[6][2][2] * temp[i+11][2] + kine[6][2][3]; 
+		}
+		for(int i = 0;i < 7;i ++){
+			x =   pos[i+11][0] * c + pos[i+11][1] * s;
+			y = - pos[i+11][0] * s + pos[i+11][1] * c;
+			pos[i+11][0] = x; pos[i+11][1] = y;
+		}
+	} else {
+		x1[0] = right[6][0][3]; x1[1] = right[6][1][3]; x1[2] = right[6][2][3];
+		// 遊脚を腰を原点とするリンク座標に変換
+		float r[4][4], a[3];
+		invHTMatrix(right[6], r);
+		// 足先の位置
+		a[0] = 0; a[1] = 0; a[2] = 0;
+		mulHTMatrix(r, a, temp[11]);
+		// 足先の位置
+		// 各関節の位置
+		for(int i = 0;i < 6;i ++){
+			a[0] = right[i][0][3]; a[1] = right[i][1][3]; a[2] = right[i][2][3];
+			mulHTMatrix(r, a, temp[i+12]);
+		}
+		// 支持脚の腰の位置に合うように変換
+		for(int i = 0;i < 7;i ++){
+			pos[i+11][0] = kine[6][0][0] * temp[i+11][0] + kine[6][0][1] * temp[i+11][1] + kine[6][0][2] * temp[i+11][2];
+			pos[i+11][1] = kine[6][1][0] * temp[i+11][0] + kine[6][1][1] * temp[i+11][1] + kine[6][1][2] * temp[i+11][2]; 
+			pos[i+11][2] = kine[6][2][0] * temp[i+11][0] + kine[6][2][1] * temp[i+11][1] + kine[6][2][2] * temp[i+11][2] + kine[6][2][3]; 
+		}
+		for(int i = 0;i < 7;i ++){
+			x =   pos[i+11][0] * c + pos[i+11][1] * s;
+			y = - pos[i+11][0] * s + pos[i+11][1] * c;
+			pos[i+11][0] = x; pos[i+11][1] = y;
 		}
 	}
 
