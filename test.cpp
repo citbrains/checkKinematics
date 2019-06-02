@@ -24,7 +24,7 @@ const struct link_para_T link_para_ganken_kun[18] =
 	{{ -5.0f,   0.0f, 227.3f},{  0.0f,  0.0f,  1.0f}},	// H1
 
 	{{  0.0f,  44.0f,   0.0f},{  0.0f,  1.0f,  0.0f}},	// BR1
-	{{  0.0f,   0.0f,  57.5f},{  0.0f,  0.0f,  1.0f}},	// LR1
+	{{  0.0f,   0.0f, 114.5f},{  0.0f,  0.0f,  1.0f}},	// LR1
 	{{  0.0f,   0.0f,   0.0f},{  1.0f,  0.0f,  0.0f}},	// LR2
 	{{  0.0f,   0.0f, 100.0f},{  0.0f,  1.0f,  0.0f}},	// LR3
 	{{  0.0f,   0.0f, 100.0f},{  0.0f,  1.0f,  0.0f}},	// LR4
@@ -32,7 +32,7 @@ const struct link_para_T link_para_ganken_kun[18] =
 	{{  0.0f,   0.0f,  43.0f},{  1.0f,  0.0f,  0.0f}},	// LR6
 
 	{{  0.0f, -44.0f,   0.0f},{  0.0f,  1.0f,  0.0f}},	// BL1
-	{{  0.0f,   0.0f,  57.5f},{  0.0f,  0.0f,  1.0f}},	// LL1
+	{{  0.0f,   0.0f, 114.5f},{  0.0f,  0.0f,  1.0f}},	// LL1
 	{{  0.0f,   0.0f,   0.0f},{  1.0f,  0.0f,  0.0f}},	// LL2
 	{{  0.0f,   0.0f, 100.0f},{  0.0f,  1.0f,  0.0f}},	// LL3
 	{{  0.0f,   0.0f, 100.0f},{  0.0f,  1.0f,  0.0f}},	// LL4
@@ -260,6 +260,7 @@ float camera_pos_from_waist(int *leg, float ang_t[16], float pos[11][3]){
 	
 	copyMatrix(cam, kine[9]);					// 足先を基準とするカメラの位置を計算する
 	mulMatrix(rot, cam, cam_matrix);
+	printf("%f, %f, %f\r\n", cam[0][3], cam[1][3], cam[2][3]);
 
 	// 各関節の位置を腰中心に移動
 	for(int i = 0;i < 11;i ++){
